@@ -10,8 +10,7 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors({
-  origin: 'http://localhost:5173', // Restrict purely to the frontend React app
-  methods: ['GET'],                // Only allow GET requests for products right now
+  origin: [process.env.FRONTEND_URL, 'http://localhost:5173'].filter(Boolean), 
   credentials: true
 }));
 app.use(express.json());
